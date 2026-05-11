@@ -1,0 +1,60 @@
+this-studio v0.1.0
+├── fastapi v0.113.0
+│   ├── pydantic v2.11.4
+│   │   ├── annotated-types v0.7.0
+│   │   ├── pydantic-core v2.33.2
+│   │   │   └── typing-extensions v4.13.2
+│   │   ├── typing-extensions v4.13.2
+│   │   └── typing-inspection v0.4.0
+│   │       └── typing-extensions v4.13.2
+│   ├── starlette v0.38.6
+│   │   └── anyio v4.9.0
+│   │       ├── exceptiongroup v1.2.2
+│   │       ├── idna v3.10
+│   │       ├── sniffio v1.3.1
+│   │       └── typing-extensions v4.13.2
+│   └── typing-extensions v4.13.2
+├── ruff v0.11.8
+├── uvicorn v0.31.1
+│   ├── click v8.1.8
+│   ├── h11 v0.16.0
+│   └── typing-extensions v4.13.2
+└── vadersentiment v3.3.2
+    └── requests v2.32.3
+        ├── certifi v2025.4.26
+        ├── charset-normalizer v3.4.2
+        ├── idna v3.10
+        └── urllib3 v2.4.0
+this-studio v0.1.0
+├── fastapi v0.113.0
+│   ├── pydantic v2.11.4
+│   │   ├── annotated-types v0.7.0
+│   │   ├── pydantic-core v2.33.2
+│   │   │   └── typing-extensions v4.13.2
+│   │   ├── typing-extensions v4.13.2
+│   │   └── typing-inspection v0.4.0
+│   │       └── typing-extensions v4.13.2
+│   ├── starlette v0.38.6
+│   │   └── anyio v4.9.0
+│   │       ├── exceptiongroup v1.2.2
+│   │       ├── idna v3.10
+│   │       ├── sniffio v1.3.1
+│   │       └── typing-extensions v4.13.2
+│   └── typing-extensions v4.13.2
+├── pytest v8.3.5
+│   ├── exceptiongroup v1.2.2
+│   ├── iniconfig v2.1.0
+│   ├── packaging v25.0
+│   ├── pluggy v1.5.0
+│   └── tomli v2.2.1
+├── ruff v0.11.8
+├── uvicorn v0.31.1
+│   ├── click v8.1.8
+│   ├── h11 v0.16.0
+│   └── typing-extensions v4.13.2
+└── vadersentiment v3.3.2
+    └── requests v2.32.3
+        ├── certifi v2025.4.26
+        ├── charset-normalizer v3.4.2
+        ├── idna v3.10
+        └── urllib3 v2.4.0

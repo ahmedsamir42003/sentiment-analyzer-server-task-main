@@ -1,0 +1,15 @@
+[project]
+name = "this-studio"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi~=0.113.0",
+    "httpx>=0.28.1",
+    "lightning-sdk>=0.2.14",
+    "pytest>=8.3.5",
+    "ruff>=0.11.8",
+    "uvicorn~=0.31.0",
+    "vadersentiment>=3.3.2",
+]

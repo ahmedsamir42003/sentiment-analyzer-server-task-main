@@ -12,5 +12,4 @@ deployment = Deployment(
 deployment.start(
    image=f"{os.getenv('DOCKERHUB_USERNAME')}/{os.getenv('IMAGE_NAME')}:{os.getenv('CI_COMMIT_SHORT_SHA')}", # Ollama Docker image
    ports=[8000],
-   compute="cpu",
 )

@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Lint
-        run: ./scripts/lint.sh
+        run: bash scripts/lint.sh 
 
   unit-test:
     runs-on: ubuntu-latest

@@ -39,16 +39,21 @@ jobs:
       - name: Push Image
         run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/sentiment-analyzer:latest
 
-  # ── DEPLOY STAGE ────────────────────────────
+    # ── DEPLOY STAGE ────────────────────────────
   deploy:
     runs-on: ubuntu-latest
-    needs: build-image              # waits for build to finish first
+    needs: build-image
     steps:
       - uses: actions/checkout@v4
-      - name: Install Lightning
-        run: pip install lightning
+  
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+  
+      - name: Install dependencies       # 👈 add this
+        run: uv sync
+  
       - name: Deploy to Lightning AI
         env:
           LIGHTNING_API_KEY: ${{ secrets.LIGHTNING_API_KEY }}
           LIGHTNING_USERNAME: ${{ secrets.LIGHTNING_USERNAME }}
-        run: python deploy.py
+        run: uv run python deploy.py     # 👈 use uv run instead of python

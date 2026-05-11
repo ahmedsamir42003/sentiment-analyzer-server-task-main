@@ -29,15 +29,15 @@ jobs:
   # ── BUILD STAGE ─────────────────────────────
   build-image:
     runs-on: ubuntu-latest
-    needs: [lint, unit-test]        # waits for test jobs to pass first
+    needs: [lint, unit-test]
     steps:
       - uses: actions/checkout@v4
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
-      - name: Build Image
-        run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/sentiment-analyzer:latest .
-      - name: Push Image
-        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/sentiment-analyzer:latest
+      - name: Build & Push Image
+        run: |
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/sentiment-analyzer:${{ github.sha }} .
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/sentiment-analyzer:${{ github.sha }}
 
     # ── DEPLOY STAGE ────────────────────────────
   deploy:
@@ -49,12 +49,18 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v5
   
-      - name: Install dependencies       # 👈 add this
+      - name: Install dependencies
         run: uv sync
   
       - name: Deploy to Lightning AI
         env:
+          # Lightning Auth
           LIGHTNING_USER_ID: ${{ secrets.LIGHTNING_USER_ID }}
           LIGHTNING_API_KEY: ${{ secrets.LIGHTNING_API_KEY }}
+          # deploy.py variables
           LIGHTNING_USERNAME: ${{ secrets.LIGHTNING_USERNAME }}
-        run: uv run python deploy.py     # 👈 use uv run instead of python
+          TEAMSPACE: ${{ secrets.TEAMSPACE }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+          IMAGE_NAME: sentiment-analyzer
+          CI_COMMIT_SHORT_SHA: ${{ github.sha }}   # 👈 GitHub equivalent of GitLab's variable
+        run: uv run python deploy.py
